@@ -98,7 +98,7 @@ npm test
 
 A API externa (HG Brasil Weather) possui um comportamento específico: ao receber o nome de uma cidade que não existe, em vez de retornar um erro, ela retorna os dados de um local padrão (geralmente a capital do estado ou do país).
 
-A API já trata este caso: a lógica interna deteta esta resposta padrão (from: 'default') e a converte numa mensagem de erro controlada, garantindo que o utilizador nunca receba uma previsão do tempo incorreta. Este comportamento é validado nos testes automatizados.
+A API tenta tratar este caso: a lógica interna detecta esta resposta padrão (from: 'default') e a converte numa mensagem de erro controlada, mas, mesmo tratando e incluindo esse "default" ainda é exibido (então acredito, que eles não utilizam o default e sim outro dado, que não fui afundo para descobrir.
 
 ## Arquitetura Escolhida: Camadas (Layered Architecture)
 A arquitetura do projeto foi estruturada em Camadas (Layered Architecture). Este padrão foi escolhido por promover uma clara separação de responsabilidades, o que resulta num código mais organizado, testável e fácil de expandir.
