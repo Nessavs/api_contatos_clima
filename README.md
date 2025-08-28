@@ -30,6 +30,7 @@ O projeto segue uma arquitetura em camadas para a separação de responsabilidad
 - **Banco de Dados:** MongoDB (com Mongoose)
 - **Containerização:** Docker (Docker Compose)
 - **Validação:** Joi
+- **Testes**: Mocha, Chai, Sinon
 
 ## 🚀 Como Rodar o Projeto Localmente
 
@@ -78,12 +79,23 @@ O projeto segue uma arquitetura em camadas para a separação de responsabilidad
 
 O servidor estará a rodar em `http://localhost:3000`.
 
-## 📖 Documentação da API
 
-Com o servidor a rodar, a documentação interativa do Swagger está disponível em:
+## 📖 Documentação e Testes da API
+A documentação completa e interativa da API foi criada como uma Coleção do Postman.
 
-**[http://localhost:3000/documentation](http://localhost:3000/documentation)**
+Localização: O ficheiro de exportação da coleção (API de Contatos.postman_collection.json) encontra-se na pasta /postman do projeto.
 
-## 🧪 Observações:
+Como Usar: Importe este ficheiro no seu Postman para ter acesso a todas as rotas, com exemplos de body e descrições para cada endpoint.
 
-Na API do tempo, mesmo colocando uma cidade que não existe, a API puxa um default (não sei de onde), conseguindo burlar meus retornos de erro.# api_contatos_clima
+## 🧪 Executando os Testes Automatizados
+O projeto conta com uma suíte de testes unitários e de integração para garantir a qualidade e o correto funcionamento do código.
+Para executar todos os testes, utilize o comando:
+```bash
+npm test
+```
+
+## ⚠️ Observações Importantes
+
+A API externa (HG Brasil Weather) possui um comportamento específico: ao receber o nome de uma cidade que não existe, em vez de retornar um erro, ela retorna os dados de um local padrão (geralmente a capital do estado ou do país).
+
+A nossa API já trata este caso: a lógica interna deteta esta resposta padrão (from: 'default') e a converte numa mensagem de erro controlada, garantindo que o utilizador nunca receba uma previsão do tempo incorreta. Este comportamento é validado nos testes automatizados.
