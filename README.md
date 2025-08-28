@@ -98,4 +98,36 @@ npm test
 
 A API externa (HG Brasil Weather) possui um comportamento específico: ao receber o nome de uma cidade que não existe, em vez de retornar um erro, ela retorna os dados de um local padrão (geralmente a capital do estado ou do país).
 
-A nossa API já trata este caso: a lógica interna deteta esta resposta padrão (from: 'default') e a converte numa mensagem de erro controlada, garantindo que o utilizador nunca receba uma previsão do tempo incorreta. Este comportamento é validado nos testes automatizados.
+A API já trata este caso: a lógica interna deteta esta resposta padrão (from: 'default') e a converte numa mensagem de erro controlada, garantindo que o utilizador nunca receba uma previsão do tempo incorreta. Este comportamento é validado nos testes automatizados.
+
+## Arquitetura Escolhida: Camadas (Layered Architecture)
+A arquitetura do projeto foi estruturada em Camadas (Layered Architecture). Este padrão foi escolhido por promover uma clara separação de responsabilidades, o que resulta num código mais organizado, testável e fácil de expandir.
+
+Cada camada possui um papel bem definido:
+
+routes: A camada mais externa, que define os endpoints da API, os métodos HTTP e as regras de validação de entrada.
+
+handlers (Controladores): Recebem as requisições, orquestram as chamadas para os serviços e formatam a resposta final para o cliente.
+
+services (Serviços): Onde reside a lógica de negócio principal. Esta camada executa as operações, validações de negócio e interage com a camada de dados.
+
+models (Modelos): A camada de acesso a dados, responsável por definir a estrutura (schema) e interagir diretamente com o banco de dados MongoDB.
+
+utils (Utilitários): Módulos auxiliares com lógica reutilizável, como a função para chamar a API de clima.
+
+**Vantagens desta arquitetura:**
+
+Manutenção: Alterações na lógica de negócio são concentradas na camada de serviço, minimizando o impacto em outras partes do sistema.
+
+Testabilidade: Cada camada pode ser testada de forma independente. É possível testar um serviço sem a necessidade de um servidor HTTP a rodar.
+
+Escalabilidade: Novas funcionalidades podem ser adicionadas de forma consistente, seguindo a mesma estrutura de pastas e camadas.
+
+## Padrões Adotados
+Além da arquitetura em camadas, o projeto adota os seguintes padrões e boas práticas:
+
+API RESTful: A API utiliza os verbos HTTP de forma semântica (GET, POST, PUT, DELETE) e estrutura as URLs em torno de recursos (/contatos), seguindo os princípios REST.
+
+Variáveis de Ambiente (.env): Configurações sensíveis ou que variam entre ambientes (desenvolvimento, produção) são externalizadas, aumentando a segurança e a flexibilidade da aplicação.
+
+Containerização com Docker: O uso do Docker e docker-compose garante um ambiente de desenvolvimento consistente e replicável, eliminando problemas de configuração de banco de dados entre diferentes máquinas.
