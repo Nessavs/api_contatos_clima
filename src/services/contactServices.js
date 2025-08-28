@@ -1,8 +1,6 @@
 import Contact from '../model/contactModel.js'
 import Boom from '@hapi/boom'
-//import { getWeather } from '../utils/weatherUtils.js'
-import weatherUtils from '../utils/weatherUtils.js'
-
+import { getWeather } from '../utils/weatherUtils.js'
 
 export async function createContact(contactData) {
   if (contactData.email) {

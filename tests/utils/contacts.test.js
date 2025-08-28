@@ -48,10 +48,10 @@ describe('API de Contatos - Testes de Integração', () => {
     })
 
     it('deve retornar o contato com os dados do clima', async () => {
-        getWeatherStub.resolves({ temperatura: '25°C', sugestao: '...' })
+        getWeatherStub.resolves({ temperatura: '15°C', sugestao: '...' })
         const res = await server.inject({ method: 'GET', url: `/contatos/${contactId}` })
         expect(res.statusCode).to.equal(200)
-        expect(res.result.clima.temperatura).to.equal('25°C')
+        expect(res.result.clima.temperatura).to.equal('15°C')
     })
   })
 })
