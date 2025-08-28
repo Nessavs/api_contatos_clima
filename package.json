@@ -1,0 +1,33 @@
+{
+  "name": "api-contatos",
+  "version": "1.0.0",
+  "description": "API para gerenciamento de contatos com Hapi.js",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "NODE_ENV=test mocha tests/**/*.test.js"
+  },
+  "keywords": [
+    "hapi",
+    "api",
+    "mongodb"
+  ],
+  "author": "Vanessa",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@hapi/hapi": "^21.3.9",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "joi": "^17.13.3",
+    "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
+    "chai": "^4.4.1",
+    "mocha": "^10.4.0",
+    "nodemon": "^3.1.4",
+    "sinon": "^18.0.0"
+  }
+}

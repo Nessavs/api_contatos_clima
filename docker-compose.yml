@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # Define o serviço do nosso banco de dados MongoDB
+  mongo-db:
+    image: mongo:latest # Usa a imagem oficial mais recente do MongoDB
+    container_name: contatos-mongo-db # Nome do container para fácil identificação
+    restart: always # Reinicia o container automaticamente se ele parar
+    ports:
+      - "27017:27017" # Mapeia a porta do seu computador para a porta do container
+    volumes:
+      - mongo-data:/data/db # Cria um volume para persistir os dados do banco
+
+volumes:
+  # Define o volume que será usado pelo serviço do MongoDB
+  mongo-data:
