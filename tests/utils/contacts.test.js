@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 import sinon from 'sinon'
-import { init } from '../src/server.js'
-import Contact from '../src/models/contactModel.js'
-import { getWeather } from '../../src/utils/weatherUtils.js'
+import { init } from '../../src/server.js'
+import Contact from '../../src/model/contactModel.js'
+import weatherUtils from '../../src/utils/weatherUtils.js'
 
 describe('API de Contatos - Testes de Integração', () => {
   let server

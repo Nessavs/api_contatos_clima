@@ -1,6 +1,7 @@
 import Contact from '../model/contactModel.js'
 import Boom from '@hapi/boom'
-import { getWeather } from '../utils/weatherUtils.js'
+//import { getWeather } from '../utils/weatherUtils.js'
+import weatherUtils from '../utils/weatherUtils.js'
 
 
 export async function createContact(contactData) {
@@ -70,7 +71,7 @@ export async function updateContact(id, updateData) {
   }
 
   if (updatedContact.endereco && updatedContact.endereco.cidade) {
-    weatherInfo = await getWeather(updatedContact.endereco.cidade)
+    weatherInfo = await weatherUtils.getWeather(updatedContact.endereco.cidade)
   }
 
   return { ...updatedContact, clima: weatherInfo }

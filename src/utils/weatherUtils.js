@@ -58,3 +58,6 @@ export async function getWeather(cidade) {
     }
   }
 }
+
+const weatherUtils = { getWeather }
+export default weatherUtils
